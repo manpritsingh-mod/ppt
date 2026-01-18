@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Review - Manprit Singh Panesar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; overflow: hidden; }
+        .slide { width: 100vw; height: 100vh; position: absolute; display: none; padding: 50px 70px; opacity: 0; transition: opacity 0.4s; }
+        .slide.active { display: flex; flex-direction: column; opacity: 1; }
+        h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; }
+        h2 { font-size: 2rem; font-weight: 700; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
+        .badge { background: rgba(59,130,246,0.2); border: 1px solid #3b82f6; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; color: #3b82f6; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; flex: 1; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .card { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; border: 1px solid rgba(255,255,255,0.1); }
+        .card h3 { font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .card ul { list-style: none; }
+        .card li { padding: 8px 0; color: #cbd5e1; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; }
+        .obj { border-left: 4px solid #3b82f6; } .obj h3 { color: #3b82f6; }
+        .ach { border-left: 4px solid #22c55e; } .ach h3 { color: #22c55e; }
+        .lrn { border-left: 4px solid #a855f7; } .lrn h3 { color: #a855f7; }
+        .chl { border-left: 4px solid #f97316; } .chl h3 { color: #f97316; }
+        .arch-box { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 30px; border: 1px solid rgba(255,255,255,0.1); }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
+        .flow-step { background: linear-gradient(135deg, #1e3a5f, #2563eb); padding: 15px 25px; border-radius: 12px; text-align: center; min-width: 120px; }
+        .flow-arrow { color: #3b82f6; font-size: 1.5rem; }
+        .demo-placeholder { background: linear-gradient(135deg, #1f2937, #374151); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; border: 2px dashed #4b5563; }
+        .demo-placeholder .icon { font-size: 4rem; margin-bottom: 20px; }
+        .demo-placeholder p { color: #9ca3af; font-size: 1.2rem; }
+        .nav { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 100; }
+        .nav button { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 25px; border-radius: 25px; cursor: pointer; transition: 0.3s; }
+        .nav button:hover { background: rgba(255,255,255,0.2); }
+        .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); transition: width 0.3s; }
+        .indicator { position: fixed; bottom: 25px; right: 40px; color: #64748b; }
+        .title-slide { background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a); justify-content: center; align-items: center; text-align: center; }
+        .title-slide h1 { font-size: 3.5rem; background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-slide .subtitle { font-size: 1.4rem; color: #94a3b8; margin: 15px 0 40px; }
+        .title-slide .info { display: flex; gap: 40px; color: #64748b; }
+        .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; flex: 1; }
+        .about-left { display: flex; flex-direction: column; gap: 20px; }
+        .about-item { display: flex; align-items: center; gap: 15px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .about-item .label { color: #64748b; min-width: 140px; font-weight: 500; }
+        .about-right { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .photo-placeholder { width: 180px; height: 200px; background: linear-gradient(135deg, #1e3a5f, #3b82f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .interests { display: flex; gap: 12px; flex-wrap: wrap; }
+        .interest-tag { background: rgba(139,92,246,0.2); border: 1px solid #8b5cf6; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; color: #a78bfa; }
+        .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1; }
+        .q-card { border-radius: 16px; padding: 25px; }
+        .q1 { background: linear-gradient(180deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid #3b82f6; }
+        .q2 { background: linear-gradient(180deg, rgba(168,85,247,0.2), rgba(168,85,247,0.05)); border: 1px solid #a855f7; }
+        .q3 { background: linear-gradient(180deg, rgba(34,197,94,0.2), rgba(34,197,94,0.05)); border: 1px solid #22c55e; }
+        .q4 { background: linear-gradient(180deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid #f97316; }
+        .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 600; }
+        .q1 .q-header { color: #3b82f6; } .q2 .q-header { color: #a855f7; } .q3 .q-header { color: #22c55e; } .q4 .q-header { color: #f97316; }
+        .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 50px; }
+        .summary-card { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 30px; text-align: center; }
+        .summary-card .icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .summary-card .value { font-size: 2rem; font-weight: 700; color: #22c55e; margin-bottom: 5px; }
+        .summary-card .label { color: #64748b; }
+        .thank-you { font-size: 3rem; font-weight: 800; background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; }
+        .arch-diagram { background: #0a0a0a; border-radius: 12px; padding: 25px; font-family: monospace; font-size: 0.85rem; overflow: auto; max-height: 400px; }
+        .doc-section { background: rgba(34,197,94,0.1); border: 1px solid #22c55e; border-radius: 12px; padding: 20px; margin-top: 20px; }
+        .doc-section h4 { color: #22c55e; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="progress" id="progress"></div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide title-slide active">
+        <h1>INTERNSHIP</h1>
+        <p class="subtitle">Building CI/CD Solutions (Q1 FY'25 - Q4 FY'26)</p>
+        <p style="font-size:1.8rem; font-weight:600; margin-bottom:15px;">Manprit Singh Panesar</p>
+        <div class="info">
+            <span>👨‍💼 Manager: Gautom Dutta</span>
+            <span>🏗️ Architect: Sunil Kumar EK</span>
+            <span>🎯 Mentor: Viresh Hiremath</span>
+        </div>
+    </div>
+
+    <!-- Slide 2: About Me -->
+    <div class="slide" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+        <h2>👤 About Me</h2>
+        <div class="about-grid">
+            <div class="about-left">
+                <div class="about-item"><span class="label">Role:</span> <span>Intern</span></div>
+                <div class="about-item"><span class="label">Hometown:</span> <span>Jamshedpur, Jharkhand</span></div>
+                <div class="about-item"><span class="label">Education:</span> <span>B.Tech (CSE), Arka Jain University</span></div>
+                <div class="about-item"><span class="label">Skillset:</span> <span>Java, Spring Boot, CI/CD, Jenkins, Docker</span></div>
+                <div class="about-item"><span class="label">Tech Interests:</span> <span>CI/CD Automation, Backend Development, DevOps</span></div>
+                <div class="about-item"><span class="label">Joining Date:</span> <span>14th May, 2025</span></div>
+            </div>
+            <div class="about-right">
+                <div class="photo-placeholder">👨‍💻</div>
+                <div style="text-align:center;">
+                    <p style="color:#64748b; margin-bottom:10px;">Beyond Technology</p>
+                    <div class="interests">
+                        <span class="interest-tag">🎨 Art & Design</span>
+                        <span class="interest-tag">✈️ Travel</span>
+                        <span class="interest-tag">🏸 Badminton</span>
+                        <span class="interest-tag">🏀 Basketball</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Internship Roadmap -->
+    <div class="slide" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+        <h2>📅 Internship Roadmap</h2>
+        <div class="timeline">
+            <div class="q-card q1">
+                <div class="q-header">📚 Q1 FY'25</div>
+                <h3 style="font-size:1.2rem; margin-bottom:12px;">Foundation & POC 1</h3>
+                <ul style="list-style:none; color:#94a3b8; font-size:0.9rem;">
+                    <li>• Learning Jenkins, Docker</li>
+                    <li>• Groovy & Python scripting</li>
+                    <li>• POC 1: Repo Maintenance</li>
+                </ul>
+            </div>
+            <div class="q-card q2">
+                <div class="q-header">🔧 Q2 FY'25</div>
+                <h3 style="font-size:1.2rem; margin-bottom:12px;">UnifiedCI Core</h3>
+                <ul style="list-style:none; color:#94a3b8; font-size:0.9rem;">
+                    <li>• Shared Library Design</li>
+                    <li>• Java & Python Support</li>
+                    <li>• POC 2: UnifiedCI</li>
+                </ul>
+            </div>
+            <div class="q-card q3">
+                <div class="q-header">🚀 Q3 FY'25</div>
+                <h3 style="font-size:1.2rem; margin-bottom:12px;">React + AI/ML</h3>
+                <ul style="list-style:none; color:#94a3b8; font-size:0.9rem;">
+                    <li>• React/React-Native Support</li>
+                    <li>• Jenkins MCP Exploration</li>
+                    <li>• AI-assisted CI Research</li>
+                </ul>
+            </div>
+            <div class="q-card q4">
+                <div class="q-header">📱 Q4 FY'26</div>
+                <h3 style="font-size:1.2rem; margin-bottom:12px;">Mobile CI/CD + AI/ML</h3>
+                <ul style="list-style:none; color:#94a3b8; font-size:0.9rem;">
+                    <li>• Android CI/CD Pipeline</li>
+                    <li>• Google Play Deployment</li>
+                    <li>• AI/ML Integration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Q1 Overview -->
+    <div class="slide" style="background: linear-gradient(135deg, #0f172a, #1e3a5f);">
+        <h2><span class="badge" style="background:rgba(59,130,246,0.2); border-color:#3b82f6; color:#3b82f6;">Q1 FY'25</span> Foundation & POC 1</h2>
+        <div class="grid-4">
+            <div class="card obj">
+                <h3>🎯 Objective</h3>
+                <ul>
+                    <li>To build foundational knowledge in CI/CD concepts</li>
+                    <li>To understand Jenkins pipeline development</li>
+                    <li>To deliver a repository maintenance automation solution</li>
+                </ul>
+            </div>
+            <div class="card ach">
+                <h3>✅ Achievements</h3>
+                <ul>
+                    <li>Completed onboarding & KT sessions</li>
+                    <li>Built shared-library for email & XLS operations</li>
+                    <li>Delivered POC 1: Automated PR cleanup</li>
+                    <li>Presented MVP to the team</li>
+                </ul>
+            </div>
+            <div class="card lrn">
+                <h3>📚 Learnings</h3>
+                <ul>
+                    <li>Jenkins administration & pipelines</li>
+                    <li>Docker containerization</li>
+                    <li>Groovy & Python scripting</li>
+                    <li>Shell scripting for automation</li>
+                </ul>
+            </div>
+            <div class="card chl">
+                <h3>⚡ Challenges</h3>
+                <ul>
+                    <li>Understanding complex CI pipelines</li>
+                    <li>Scripting across different tools</li>
+                    <li>Handling edge cases in PR automation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Q1 Architecture -->
+    <div class="slide" style="background: linear-gradient(135deg, #0f172a, #1e3a5f);">
+        <h2><span class="badge" style="background:rgba(59,130,246,0.2); border-color:#3b82f6; color:#3b82f6;">Q1 FY'25</span> POC 1: Architecture</h2>
+        <div class="grid-2">
+            <div class="arch-box">
+                <h3 style="color:#3b82f6; margin-bottom:20px;">Automated Pull Request Management Flow</h3>
+                <div class="flow">
+                    <div class="flow-step"><div style="font-size:1.5rem;">1️⃣</div><div>Initialize</div><div style="font-size:0.8rem; color:#94a3b8;">Job Trigger</div></div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step"><div style="font-size:1.5rem;">2️⃣</div><div>Analyze</div><div style="font-size:0.8rem; color:#94a3b8;">PR Identification</div></div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step"><div style="font-size:1.5rem;">3️⃣</div><div>Label</div><div style="font-size:0.8rem; color:#94a3b8;">Tag Process</div></div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step"><div style="font-size:1.5rem;">4️⃣</div><div>Cleanup</div><div style="font-size:0.8rem; color:#94a3b8;">Close PR & Delete Branch</div></div>
+                </div>
+            </div>
+            <div>
+                <div class="card" style="margin-bottom:20px;">
+                    <h3 style="color:#3b82f6;">🔧 Key Methods Implemented</h3>
+                    <ul>
+                        <li><code>fetchAllPRs()</code> - Retrieve all pull requests</li>
+                        <li><code>labelOldPRs()</code> - Apply labels to stale PRs</li>
+                        <li><code>closeOldPRs()</code> - Auto-close inactive PRs</li>
+                        <li><code>deleteBranches()</code> - Clean up merged branches</li>
+                    </ul>
+                </div>
+                <div class="card" style="background:rgba(239,68,68,0.1); border-color:#ef4444;">
+                    <h3 style="color:#ef4444;">📄 Documentation</h3>
+                    <p style="color:#94a3b8;">No formal documentation for Q1 (learning phase)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Q1 Demo -->
+    <div class="slide" style="background: linear-gradient(135deg, #0f172a, #1e3a5f);">
+        <h2><span class="badge" style="background:rgba(59,130,246,0.2); border-color:#3b82f6; color:#3b82f6;">Q1 FY'25</span> Demo Video</h2>
+        <div class="demo-placeholder">
+            <div class="icon">🎬</div>
+            <p>POC 1: Automated Repository Maintenance Demo</p>
+            <p style="margin-top:15px; font-size:0.9rem; color:#6b7280;">[Insert Demo Video Here]</p>
+        </div>
+    </div>
+
+    <!-- Slide 7: Q2 Overview -->
+    <div class="slide" style="background: linear-gradient(135deg, #1e1b4b, #312e81);">
+        <h2><span class="badge" style="background:rgba(168,85,247,0.2); border-color:#a855f7; color:#a855f7;">Q2 FY'25</span> UnifiedCI Core</h2>
+        <div class="grid-4">
+            <div class="card obj">
+                <h3>🎯 Objective</h3>
+                <ul>
+                    <li>To create a unified Jenkins Shared Library</li>
+                    <li>To support Java (Maven/Gradle) & Python pipelines</li>
+                    <li>To standardize CI/CD across teams</li>
+                </ul>
+            </div>
+            <div class="card ach">
+                <h3>✅ Achievements</h3>
+                <ul>
+                    <li>Designed & implemented UnifiedCI library</li>
+                    <li>Integrated language auto-detection</li>
+                    <li>Added Java (Maven, Gradle) support</li>
+                    <li>Added Python (pip, pytest) support</li>
+                    <li>Created reusable test templates</li>
+                </ul>
+            </div>
+            <div class="card lrn">
+                <h3>📚 Learnings</h3>
+                <ul>
+                    <li>Jenkins Shared Library structure</li>
+                    <li>Test frameworks (JUnit, pytest)</li>
+                    <li>Linting tools (Checkstyle, Pylint)</li>
+                    <li>Nexus Repository integration</li>
+                </ul>
+            </div>
+            <div class="card chl">
+                <h3>⚡ Challenges</h3>
+                <ul>
+                    <li>Supporting different tech stacks</li>
+                    <li>Multi-language edge cases</li>
+                    <li>Monorepo detection logic</li>
+                    <li>Balancing flexibility & standardization</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Q2 Architecture -->
+    <div class="slide" style="background: linear-gradient(135deg, #1e1b4b, #312e81);">
+        <h2><span class="badge" style="background:rgba(168,85,247,0.2); border-color:#a855f7; color:#a855f7;">Q2 FY'25</span> Architecture & Documentation</h2>
+        <div class="grid-2">
+            <div class="arch-box">
+                <h3 style="color:#a855f7; margin-bottom:15px;">UnifiedCI Shared Library Architecture</h3>
+                <pre style="color:#e2e8f0; font-size:0.75rem; line-height:1.6;">
+┌─────────────────────────────────────────┐
+│      SHARED LIBRARY REPOSITORY          │
+├─────────────────────────────────────────┤
+│  vars/ (Core)        │  src/ (Classes)  │
+│  • Templates         │  • Script Gen    │
+│  • Core Utils        │  • Docker Mgr    │
+│  • Builders          │  • Git Manager   │
+├─────────────────────────────────────────┤
+│  Core Logic          │  Pipeline        │
+│  • Build, Test       │  Templates       │
+│  • Lint, Report      │  • Python        │
+│  • Notify            │  • Java Maven    │
+│                      │  • Java Gradle   │
+├─────────────────────────────────────────┤
+│  Command Generators  │  Core Utilities  │
+│  • Maven, Gradle     │  • Config Reader │
+│  • Python            │  • Lang Detection│
+└─────────────────────────────────────────┘
+        ↓ CONSUMED BY PROJECT TEAMS ↓
+   [Team A: Python] [Team B: Java] [Team C]
+                </pre>
+            </div>
+            <div>
+                <div class="card" style="border-color:#22c55e; margin-bottom:20px;">
+                    <h3 style="color:#22c55e;">📄 Documentation Created</h3>
+                    <ul>
+                        <li>✅ High-level Architecture Document</li>
+                        <li>✅ API Reference for all methods</li>
+                        <li>✅ Onboarding Guide for teams</li>
+                        <li>✅ Configuration YAML schema</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="color:#a855f7;">🔧 Key Features</h3>
+                    <ul>
+                        <li>Auto-detect project type</li>
+                        <li>Configurable via YAML</li>
+                        <li>Docker-based builds</li>
+                        <li>Allure reporting + Slack notifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Q2 Demo -->
+    <div class="slide" style="background: linear-gradient(135deg, #1e1b4b, #312e81);">
+        <h2><span class="badge" style="background:rgba(168,85,247,0.2); border-color:#a855f7; color:#a855f7;">Q2 FY'25</span> Demo Video</h2>
+        <div class="demo-placeholder">
+            <div class="icon">🎬</div>
+            <p>POC 2: UnifiedCI Shared Library Demo</p>
+            <p style="margin-top:15px; font-size:0.9rem; color:#6b7280;">[Insert Demo Video Here]</p>
+        </div>
+    </div>
+
+    <!-- Slide 10: Q3 Overview -->
+    <div class="slide" style="background: linear-gradient(135deg, #134e4a, #115e59);">
+        <h2><span class="badge" style="background:rgba(34,197,94,0.2); border-color:#22c55e; color:#22c55e;">Q3 FY'25</span> React + AI/ML Exploration</h2>
+        <div class="grid-4">
+            <div class="card obj">
+                <h3>🎯 Objective</h3>
+                <ul>
+                    <li>To extend UnifiedCI for React/React-Native</li>
+                    <li>To explore AI/ML integration for CI automation</li>
+                    <li>To research Jenkins MCP capabilities</li>
+                </ul>
+            </div>
+            <div class="card ach">
+                <h3>✅ Achievements</h3>
+                <ul>
+                    <li>Extended CI framework with React support</li>
+                    <li>Standardized cross-language pipelines</li>
+                    <li>Explored Jenkins MCP for AI-assisted CI</li>
+                    <li>Documented AI/ML optimization areas</li>
+                </ul>
+            </div>
+            <div class="card lrn">
+                <h3>📚 Learnings</h3>
+                <ul>
+                    <li>React ecosystem (npm, Jest, Cypress)</li>
+                    <li>ESLint, Prettier configuration</li>
+                    <li>Model Context Protocol (MCP)</li>
+                    <li>LLM integration patterns</li>
+                </ul>
+            </div>
+            <div class="card chl">
+                <h3>⚡ Challenges</h3>
+                <ul>
+                    <li>Cross-language pipeline compatibility</li>
+                    <li>Balancing feature dev with AI research</li>
+                    <li>Understanding MCP architecture</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Q3 Architecture -->
+    <div class="slide" style="background: linear-gradient(135deg, #134e4a, #115e59);">
+        <h2><span class="badge" style="background:rgba(34,197,94,0.2); border-color:#22c55e; color:#22c55e;">Q3 FY'25</span> Architecture & Documentation</h2>
+        <div class="grid-2">
+            <div class="arch-box">
+                <h3 style="color:#22c55e; margin-bottom:15px;">React Pipeline Extension</h3>
+                <div style="margin-bottom:20px;">
+                    <p style="color:#94a3b8; margin-bottom:10px;">Extended UnifiedCI to support:</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                        <span style="background:rgba(34,197,94,0.2); border:1px solid #22c55e; padding:6px 12px; border-radius:8px; font-size:0.85rem;">npm</span>
+                        <span style="background:rgba(34,197,94,0.2); border:1px solid #22c55e; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Jest</span>
+                        <span style="background:rgba(34,197,94,0.2); border:1px solid #22c55e; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Cypress</span>
+                        <span style="background:rgba(34,197,94,0.2); border:1px solid #22c55e; padding:6px 12px; border-radius:8px; font-size:0.85rem;">ESLint</span>
+                        <span style="background:rgba(34,197,94,0.2); border:1px solid #22c55e; padding:6px 12px; border-radius:8px; font-size:0.85rem;">Node 18/20</span>
+                    </div>
+                </div>
+                <h3 style="color:#8b5cf6; margin:20px 0 15px;">Jenkins MCP Exploration</h3>
+                <div class="flow" style="margin:0;">
+                    <div class="flow-step" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);"><div>🧠</div><div>LLM</div></div>
+                    <span class="flow-arrow">↔</span>
+                    <div class="flow-step" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);"><div>🔌</div><div>MCP</div></div>
+                    <span class="flow-arrow">↔</span>
+                    <div class="flow-step" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);"><div>⚙️</div><div>Jenkins</div></div>
+                </div>
+            </div>
+            <div>
+                <div class="card" style="border-color:#22c55e; margin-bottom:20px;">
+                    <h3 style="color:#22c55e;">📄 Documentation</h3>
+                    <ul>
+                        <li>✅ React pipeline configuration guide</li>
+                        <li>✅ Extended API documentation</li>
+                        <li>✅ AI/ML exploration findings</li>
+                        <li>✅ Future roadmap with AI integration</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color:#8b5cf6;">
+                    <h3 style="color:#8b5cf6;">🤖 AI/ML Use Cases Identified</h3>
+                    <ul>
+                        <li>Intelligent failure analysis</li>
+                        <li>Automated issue resolution</li>
+                        <li>Log analysis with LLMs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Q3 Demo -->
+    <div class="slide" style="background: linear-gradient(135deg, #134e4a, #115e59);">
+        <h2><span class="badge" style="background:rgba(34,197,94,0.2); border-color:#22c55e; color:#22c55e;">Q3 FY'25</span> Demo Video</h2>
+        <div class="demo-placeholder">
+            <div class="icon">🎬</div>
+            <p>React Pipeline + AI/ML Exploration Demo</p>
+            <p style="margin-top:15px; font-size:0.9rem; color:#6b7280;">[Insert Demo Video Here]</p>
+        </div>
+    </div>
+
+    <!-- Slide 13: Q4 Overview -->
+    <div class="slide" style="background: linear-gradient(135deg, #7c2d12, #9a3412);">
+        <h2><span class="badge" style="background:rgba(249,115,22,0.2); border-color:#f97316; color:#f97316;">Q4 FY'26</span> Mobile CI/CD + AI/ML</h2>
+        <div class="grid-4">
+            <div class="card obj">
+                <h3>🎯 Objective</h3>
+                <ul>
+                    <li>To implement Android CI/CD with Docker</li>
+                    <li>To enable Google Play Store deployment</li>
+                    <li>To advance AI/ML integration for smart pipelines</li>
+                </ul>
+            </div>
+            <div class="card ach">
+                <h3>✅ Achievements</h3>
+                <ul>
+                    <li>Environment setup completed</li>
+                    <li>Build pipeline working</li>
+                    <li>Testing integration done</li>
+                    <li>Validated with React Native apps</li>
+                    <li>🔄 Play Store deployment in progress</li>
+                </ul>
+            </div>
+            <div class="card lrn">
+                <h3>📚 Learnings</h3>
+                <ul>
+                    <li>Android CI/CD best practices</li>
+                    <li>Fastlane for deployment</li>
+                    <li>Docker for mobile builds</li>
+                    <li>APK/AAB generation</li>
+                </ul>
+            </div>
+            <div class="card chl">
+                <h3>⚡ Challenges</h3>
+                <ul>
+                    <li>Play Store deployment validation</li>
+                    <li>Signing certificate management</li>
+                    <li>AI/ML model integration complexity</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Q4 Architecture -->
+    <div class="slide" style="background: linear-gradient(135deg, #7c2d12, #9a3412);">
+        <h2><span class="badge" style="background:rgba(249,115,22,0.2); border-color:#f97316; color:#f97316;">Q4 FY'26</span> Architecture & Documentation</h2>
+        <div class="grid-2">
+            <div class="arch-box">
+                <h3 style="color:#f97316; margin-bottom:15px;">Mobile CI/CD Architecture</h3>
+                <pre style="color:#e2e8f0; font-size:0.75rem; line-height:1.5;">
+┌──────────────────────────────────────┐
+│         JENKINS CONTROLLER           │
+│  Jenkinsfile → Shared Library →      │
+│              Pipeline Execution      │
+└──────────────────────────────────────┘
+                    ↓
+┌──────────────────────────────────────┐
+│           DOCKER AGENT               │
+│   react-native-android:latest        │
+│  ┌────────┐ ┌────────┐ ┌────────┐   │
+│  │Java 17 │ │Node 20 │ │SDK 34  │   │
+│  └────────┘ └────────┘ └────────┘   │
+│  ┌────────┐ ┌────────┐              │
+│  │Fastlane│ │Gradle  │              │
+│  └────────┘ └────────┘              │
+└──────────────────────────────────────┘
+          ↓           ↓           ↓
+    [Nexus]    [Play Store]    [Slack]
+                </pre>
+            </div>
+            <div>
+                <div class="card" style="border-color:#22c55e; margin-bottom:20px;">
+                    <h3 style="color:#22c55e;">📄 Documentation</h3>
+                    <ul>
+                        <li>✅ Android CI/CD setup guide</li>
+                        <li>✅ Docker image specifications</li>
+                        <li>🔄 Play Store deployment guide (in progress)</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color:#8b5cf6;">
+                    <h3 style="color:#8b5cf6;">🤖 AI/ML Integration (Initial)</h3>
+                    <ul>
+                        <li>Smart Jenkins Node Selection using ML</li>
+                        <li>High-level approach defined</li>
+                        <li>CI areas for AI/ML identified</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Q4 Demo -->
+    <div class="slide" style="background: linear-gradient(135deg, #7c2d12, #9a3412);">
+        <h2><span class="badge" style="background:rgba(249,115,22,0.2); border-color:#f97316; color:#f97316;">Q4 FY'26</span> Demo Video</h2>
+        <div class="demo-placeholder">
+            <div class="icon">🔄</div>
+            <p>Mobile CI/CD Demo - Work in Progress</p>
+            <p style="margin-top:15px; font-size:0.9rem; color:#6b7280;">[Demo video will be added upon completion]</p>
+        </div>
+    </div>
+
+    <!-- Slide 16: Key Achievements -->
+    <div class="slide" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+        <h2>🏆 Key Achievements</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="icon">🎯</div>
+                <div class="value">4</div>
+                <div class="label">POCs Delivered</div>
+            </div>
+            <div class="summary-card">
+                <div class="icon">🌐</div>
+                <div class="value">4</div>
+                <div class="label">Tech Stacks Supported</div>
+            </div>
+            <div class="summary-card">
+                <div class="icon">📉</div>
+                <div class="value">95%</div>
+                <div class="label">Code Reduction</div>
+            </div>
+            <div class="summary-card">
+                <div class="icon">⏱️</div>
+                <div class="value">Days→Hrs</div>
+                <div class="label">Setup Time</div>
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color:#22c55e;">✅ Delivered</h3>
+                <ul>
+                    <li>POC 1: Automated Repository Maintenance</li>
+                    <li>POC 2: UnifiedCI for Java & Python</li>
+                    <li>POC 3: React Extension + AI/ML Research</li>
+                    <li>POC 4: Mobile CI/CD (In Progress)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="color:#3b82f6;">📚 Documentation</h3>
+                <ul>
+                    <li>Architecture documents for all POCs</li>
+                    <li>API reference & onboarding guides</li>
+                    <li>Configuration schemas & examples</li>
+                    <li>Future roadmap with AI/ML vision</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: Future Roadmap -->
+    <div class="slide" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+        <h2>🚀 Future Roadmap</h2>
+        <div class="grid-2" style="flex:1;">
+            <div>
+                <div class="card" style="margin-bottom:20px; border-color:#22c55e;">
+                    <h3 style="color:#22c55e;">📱 Mobile CI/CD Completion</h3>
+                    <ul>
+                        <li>Complete Play Store deployment validation</li>
+                        <li>iOS support exploration</li>
+                        <li>Cross-platform testing integration</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color:#3b82f6;">
+                    <h3 style="color:#3b82f6;">🏢 Organization Adoption</h3>
+                    <ul>
+                        <li>Pilot rollout to production teams</li>
+                        <li>Training & onboarding sessions</li>
+                        <li>Feedback collection & iteration</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="card" style="margin-bottom:20px; border-color:#8b5cf6;">
+                    <h3 style="color:#8b5cf6;">🤖 AI/ML Integration</h3>
+                    <ul>
+                        <li>LLM-powered log analysis</li>
+                        <li>Intelligent failure prediction</li>
+                        <li>Smart test selection</li>
+                        <li>Automated issue resolution</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color:#f97316;">
+                    <h3 style="color:#f97316;">☁️ Cloud Enhancement</h3>
+                    <ul>
+                        <li>Auto-scaling build infrastructure</li>
+                        <li>Cloud-native CI/CD patterns</li>
+                        <li>Cost optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Thank You -->
+    <div class="slide title-slide">
+        <h1 class="thank-you">Thank You!</h1>
+        <p style="font-size:1.5rem; color:#94a3b8; margin-top:20px;">Happy to take any questions 🙋</p>
+        <div style="margin-top:50px; display:flex; gap:30px; color:#64748b;">
+            <span>📧 manprit.singh@sisc.com</span>
+            <span>💼 SISC Intern</span>
+        </div>
+    </div>
+
+    <div class="nav">
+        <button onclick="prevSlide()">← Previous</button>
+        <button onclick="nextSlide()">Next →</button>
+    </div>
+    <div class="indicator"><span id="curr">1</span> / <span id="total">18</span></div>
+
+    <script>
+        let curr = 0;
+        const slides = document.querySelectorAll('.slide');
+        document.getElementById('total').textContent = slides.length;
+        function show(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            curr = (n + slides.length) % slides.length;
+            slides[curr].classList.add('active');
+            document.getElementById('curr').textContent = curr + 1;
+            document.getElementById('progress').style.width = ((curr + 1) / slides.length * 100) + '%';
+        }
+        function nextSlide() { show(curr + 1); }
+        function prevSlide() { show(curr - 1); }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>
