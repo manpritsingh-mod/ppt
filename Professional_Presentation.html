@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Review | Manprit Singh Panesar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --accent-blue: #2563eb;
+            --accent-purple: #7c3aed;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+        }
+
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at 20% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            padding: 60px 80px;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typography */
+        .slide-header {
+            margin-bottom: 40px;
+        }
+
+        .quarter-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .q1-badge {
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: #60a5fa;
+        }
+
+        .q2-badge {
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            color: #a78bfa;
+        }
+
+        .q3-badge {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+        }
+
+        .q4-badge {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            flex: 1;
+        }
+
+        .flex-1 {
+            flex: 1;
+        }
+
+        /* Quarter Cards with colored top border */
+        .objective-card {
+            border-top: 3px solid var(--accent-blue);
+        }
+
+        .objective-card h3 {
+            color: #60a5fa;
+        }
+
+        .achievement-card {
+            border-top: 3px solid var(--accent-green);
+        }
+
+        .achievement-card h3 {
+            color: #34d399;
+        }
+
+        .learning-card {
+            border-top: 3px solid var(--accent-purple);
+        }
+
+        .learning-card h3 {
+            color: #a78bfa;
+        }
+
+        .challenge-card {
+            border-top: 3px solid var(--accent-orange);
+        }
+
+        .challenge-card h3 {
+            color: #fbbf24;
+        }
+
+        /* Lists */
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            padding: 10px 0;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.5;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+
+        .content-list li::before {
+            content: "→";
+            color: inherit;
+            opacity: 0.5;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-green));
+            transition: width 0.4s ease;
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 35px;
+            right: 60px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Title Slide */
+        .title-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title-slide h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin: 20px 0 50px;
+            font-weight: 400;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 50px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* About Slide */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            flex: 1;
+            align-items: center;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-label {
+            width: 150px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: var(--text-primary);
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .interest-tag {
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.25);
+            color: #a78bfa;
+        }
+
+        /* Roadmap */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            flex: 1;
+        }
+
+        .roadmap-card {
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .roadmap-card.q1 {
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.1), transparent);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .roadmap-card.q2 {
+            background: linear-gradient(180deg, rgba(124, 58, 237, 0.1), transparent);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .roadmap-card.q3 {
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.1), transparent);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .roadmap-card.q4 {
+            background: linear-gradient(180deg, rgba(245, 158, 11, 0.1), transparent);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .roadmap-header {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .roadmap-card.q1 .roadmap-header {
+            color: #60a5fa;
+        }
+
+        .roadmap-card.q2 .roadmap-header {
+            color: #a78bfa;
+        }
+
+        .roadmap-card.q3 .roadmap-header {
+            color: #34d399;
+        }
+
+        .roadmap-card.q4 .roadmap-header {
+            color: #fbbf24;
+        }
+
+        .roadmap-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .roadmap-list {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .roadmap-list li {
+            padding: 6px 0;
+        }
+
+        /* Architecture Diagram */
+        .arch-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .arch-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .flow-step {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(124, 58, 237, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 28px;
+            border-radius: 14px;
+            text-align: center;
+            min-width: 130px;
+        }
+
+        .flow-step .num {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .flow-step .label {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .flow-step .desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .flow-arrow {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        /* Demo Placeholder */
+        .demo-container {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.8), rgba(30, 30, 45, 0.8));
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            min-height: 400px;
+        }
+
+        .demo-icon {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .demo-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .demo-subtitle {
+            color: var(--text-secondary);
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .summary-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+        }
+
+        .summary-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .summary-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .summary-value.blue {
+            color: #60a5fa;
+        }
+
+        .summary-value.green {
+            color: #34d399;
+        }
+
+        .summary-value.purple {
+            color: #a78bfa;
+        }
+
+        .summary-value.orange {
+            color: #fbbf24;
+        }
+
+        .summary-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Thank You */
+        .thankyou-text {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Code block */
+        pre {
+            background: #0d0d12;
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 0.75rem;
+            overflow: auto;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* Doc badge */
+        .doc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #34d399;
+            margin: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="progress-bar" id="progress"></div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide title-slide active">
+        <div class="quarter-badge"
+            style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.1); color:#fff;">
+            Q1 FY'25 — Q4 FY'26
+        </div>
+        <h1>INTERNSHIP</h1>
+        <p class="subtitle">Building Enterprise CI/CD Solutions</p>
+        <p style="font-size:1.6rem; font-weight:600; margin-bottom:20px;">Manprit Singh Panesar</p>
+        <div class="meta-info">
+            <span>👨‍💼 Manager: Gautom Dutta</span>
+            <span>🏗️ Architect: Sunil Kumar EK</span>
+            <span>🎯 Mentor: Viresh Hiremath</span>
+        </div>
+    </div>
+
+    <!-- Slide 2: About Me -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-grid">
+            <div class="glass-card">
+                <div class="info-row"><span class="info-label">Role</span><span class="info-value">Intern</span></div>
+                <div class="info-row"><span class="info-label">Hometown</span><span class="info-value">Jamshedpur,
+                        Jharkhand</span></div>
+                <div class="info-row"><span class="info-label">Education</span><span class="info-value">B.Tech (CSE),
+                        Arka Jain University</span></div>
+                <div class="info-row"><span class="info-label">Skills</span><span class="info-value">Java, Spring Boot,
+                        CI/CD, Jenkins, Docker</span></div>
+                <div class="info-row"><span class="info-label">Tech Interests</span><span class="info-value">CI/CD
+                        Automation, Backend Development, DevOps</span></div>
+                <div class="info-row" style="border:none;"><span class="info-label">Joined</span><span
+                        class="info-value">14th May, 2025</span></div>
+            </div>
+            <div class="profile-section">
+                <div class="profile-avatar">👨‍💻</div>
+                <div>
+                    <p style="color:var(--text-secondary); margin-bottom:12px; font-size:0.9rem;">Beyond Technology</p>
+                    <div class="interest-tags">
+                        <span class="interest-tag">🎨 Art & Design</span>
+                        <span class="interest-tag">✈️ Travel</span>
+                        <span class="interest-tag">🏸 Badminton</span>
+                        <span class="interest-tag">🏀 Basketball</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Roadmap -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Internship Roadmap</h2>
+        </div>
+        <div class="roadmap-grid">
+            <div class="roadmap-card q1">
+                <div class="roadmap-header">📚 Q1 FY'25</div>
+                <div class="roadmap-title">Foundation & POC 1</div>
+                <ul class="roadmap-list">
+                    <li>• Jenkins & Docker fundamentals</li>
+                    <li>• Groovy & Python scripting</li>
+                    <li>• POC 1: Repository Maintenance</li>
+                </ul>
+            </div>
+            <div class="roadmap-card q2">
+                <div class="roadmap-header">🔧 Q2 FY'25</div>
+                <div class="roadmap-title">UnifiedCI Core</div>
+                <ul class="roadmap-list">
+                    <li>• Shared Library architecture</li>
+                    <li>• Java & Python pipelines</li>
+                    <li>• POC 2: UnifiedCI</li>
+                </ul>
+            </div>
+            <div class="roadmap-card q3">
+                <div class="roadmap-header">🚀 Q3 FY'25</div>
+                <div class="roadmap-title">React + AI/ML</div>
+                <ul class="roadmap-list">
+                    <li>• React/React-Native support</li>
+                    <li>• Jenkins MCP exploration</li>
+                    <li>• AI-assisted CI research</li>
+                </ul>
+            </div>
+            <div class="roadmap-card q4">
+                <div class="roadmap-header">📱 Q4 FY'26</div>
+                <div class="roadmap-title">Mobile + AI/ML</div>
+                <ul class="roadmap-list">
+                    <li>• Android CI/CD pipeline</li>
+                    <li>• Play Store deployment</li>
+                    <li>• AI/ML integration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Q1 Overview -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q1-badge">Q1 FY'25</span>
+            <h2>Foundation & POC 1</h2>
+        </div>
+        <div class="grid-4">
+            <div class="glass-card objective-card">
+                <h3>🎯 Objective</h3>
+                <ul class="content-list">
+                    <li>To build foundational knowledge in CI/CD concepts</li>
+                    <li>To understand Jenkins pipeline development</li>
+                    <li>To deliver repository maintenance automation</li>
+                </ul>
+            </div>
+            <div class="glass-card achievement-card">
+                <h3>✅ Achievements</h3>
+                <ul class="content-list">
+                    <li>Completed onboarding & KT sessions</li>
+                    <li>Built shared-library for email & XLS</li>
+                    <li>Delivered POC 1: Automated PR cleanup</li>
+                    <li>Presented MVP to the team</li>
+                </ul>
+            </div>
+            <div class="glass-card learning-card">
+                <h3>📚 Learnings</h3>
+                <ul class="content-list">
+                    <li>Jenkins administration & pipelines</li>
+                    <li>Docker containerization</li>
+                    <li>Groovy & Python scripting</li>
+                    <li>Shell scripting for automation</li>
+                </ul>
+            </div>
+            <div class="glass-card challenge-card">
+                <h3>⚡ Challenges</h3>
+                <ul class="content-list">
+                    <li>Understanding complex CI pipelines</li>
+                    <li>Scripting across different tools</li>
+                    <li>Handling edge cases in PR automation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Q1 Architecture -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q1-badge">Q1 FY'25</span>
+            <h2>POC 1: Architecture</h2>
+        </div>
+        <div class="grid-2">
+            <div class="arch-container">
+                <div class="arch-title" style="color:#60a5fa;">Automated Pull Request Management Flow</div>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="num">1️⃣</div>
+                        <div class="label">Initialize</div>
+                        <div class="desc">Job Trigger</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="num">2️⃣</div>
+                        <div class="label">Analyze</div>
+                        <div class="desc">PR Identification</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="num">3️⃣</div>
+                        <div class="label">Label</div>
+                        <div class="desc">Tag Process</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="num">4️⃣</div>
+                        <div class="label">Cleanup</div>
+                        <div class="desc">Close & Delete</div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="glass-card">
+                    <h3 style="color:#60a5fa;">🔧 Key Methods</h3>
+                    <ul class="content-list">
+                        <li><code>fetchAllPRs()</code> - Retrieve all pull requests</li>
+                        <li><code>labelOldPRs()</code> - Apply labels to stale PRs</li>
+                        <li><code>closeOldPRs()</code> - Auto-close inactive PRs</li>
+                        <li><code>deleteBranches()</code> - Clean up branches</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="border-top:3px solid var(--accent-orange);">
+                    <h3 style="color:#fbbf24;">📄 Documentation</h3>
+                    <p style="color:var(--text-secondary);">No formal documentation (Learning phase)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Q1 Demo -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q1-badge">Q1 FY'25</span>
+            <h2>Demo Video</h2>
+        </div>
+        <div class="demo-container">
+            <div class="demo-icon">🎬</div>
+            <div class="demo-title">POC 1: Automated Repository Maintenance</div>
+            <div class="demo-subtitle">[Insert Demo Video Here]</div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Q2 Overview -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q2-badge">Q2 FY'25</span>
+            <h2>UnifiedCI Core</h2>
+        </div>
+        <div class="grid-4">
+            <div class="glass-card objective-card">
+                <h3>🎯 Objective</h3>
+                <ul class="content-list">
+                    <li>To create unified Jenkins Shared Library</li>
+                    <li>To support Java & Python pipelines</li>
+                    <li>To standardize CI/CD across teams</li>
+                </ul>
+            </div>
+            <div class="glass-card achievement-card">
+                <h3>✅ Achievements</h3>
+                <ul class="content-list">
+                    <li>Designed & implemented UnifiedCI</li>
+                    <li>Integrated language auto-detection</li>
+                    <li>Added Java (Maven/Gradle) support</li>
+                    <li>Added Python (pip/pytest) support</li>
+                </ul>
+            </div>
+            <div class="glass-card learning-card">
+                <h3>📚 Learnings</h3>
+                <ul class="content-list">
+                    <li>Jenkins Shared Library structure</li>
+                    <li>Test frameworks (JUnit, pytest)</li>
+                    <li>Linting tools (Checkstyle, Pylint)</li>
+                    <li>Nexus Repository integration</li>
+                </ul>
+            </div>
+            <div class="glass-card challenge-card">
+                <h3>⚡ Challenges</h3>
+                <ul class="content-list">
+                    <li>Supporting different tech stacks</li>
+                    <li>Multi-language edge cases</li>
+                    <li>Monorepo detection logic</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Q2 Architecture -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q2-badge">Q2 FY'25</span>
+            <h2>Architecture & Documentation</h2>
+        </div>
+        <div class="grid-2">
+            <div class="arch-container">
+                <div class="arch-title" style="color:#a78bfa;">UnifiedCI Shared Library Architecture</div>
+                <pre>
+┌─────────────────────────────────────────┐
+│      SHARED LIBRARY REPOSITORY          │
+├─────────────────────────────────────────┤
+│  vars/ (Core)        │  src/ (Classes)  │
+│  • Templates         │  • Script Gen    │
+│  • Core Utils        │  • Docker Mgr    │
+│  • Builders          │  • Git Manager   │
+├─────────────────────────────────────────┤
+│  Core Logic          │  Pipeline        │
+│  • Build, Test       │  Templates       │
+│  • Lint, Report      │  • Python        │
+│  • Notify            │  • Java Maven    │
+│                      │  • Java Gradle   │
+├─────────────────────────────────────────┤
+│  Command Generators  │  Core Utilities  │
+│  • Maven, Gradle     │  • Config Reader │
+│  • Python            │  • Lang Detect   │
+└─────────────────────────────────────────┘
+   ↓ CONSUMED BY: [Python] [Java] [React]
+                </pre>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="glass-card" style="border-top:3px solid var(--accent-green);">
+                    <h3 style="color:#34d399;">📄 Documentation Created</h3>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+                        <span class="doc-badge">✓ Architecture Doc</span>
+                        <span class="doc-badge">✓ API Reference</span>
+                        <span class="doc-badge">✓ Onboarding Guide</span>
+                        <span class="doc-badge">✓ Config Schema</span>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3 style="color:#a78bfa;">🔧 Key Features</h3>
+                    <ul class="content-list">
+                        <li>Auto-detect project type</li>
+                        <li>Configurable via YAML</li>
+                        <li>Docker-based builds</li>
+                        <li>Allure + Slack notifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Q2 Demo -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q2-badge">Q2 FY'25</span>
+            <h2>Demo Video</h2>
+        </div>
+        <div class="demo-container">
+            <div class="demo-icon">🎬</div>
+            <div class="demo-title">POC 2: UnifiedCI Shared Library</div>
+            <div class="demo-subtitle">[Insert Demo Video Here]</div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Q3 Overview -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q3-badge">Q3 FY'25</span>
+            <h2>React + AI/ML Exploration</h2>
+        </div>
+        <div class="grid-4">
+            <div class="glass-card objective-card">
+                <h3>🎯 Objective</h3>
+                <ul class="content-list">
+                    <li>To extend UnifiedCI for React</li>
+                    <li>To explore AI/ML for CI automation</li>
+                    <li>To research Jenkins MCP capabilities</li>
+                </ul>
+            </div>
+            <div class="glass-card achievement-card">
+                <h3>✅ Achievements</h3>
+                <ul class="content-list">
+                    <li>Extended framework with React support</li>
+                    <li>Standardized cross-language pipelines</li>
+                    <li>Explored Jenkins MCP</li>
+                    <li>Documented AI/ML optimization areas</li>
+                </ul>
+            </div>
+            <div class="glass-card learning-card">
+                <h3>📚 Learnings</h3>
+                <ul class="content-list">
+                    <li>React ecosystem (npm, Jest, Cypress)</li>
+                    <li>ESLint, Prettier configuration</li>
+                    <li>Model Context Protocol (MCP)</li>
+                    <li>LLM integration patterns</li>
+                </ul>
+            </div>
+            <div class="glass-card challenge-card">
+                <h3>⚡ Challenges</h3>
+                <ul class="content-list">
+                    <li>Cross-language compatibility</li>
+                    <li>Balancing dev with AI research</li>
+                    <li>Understanding MCP architecture</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Q3 Architecture -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q3-badge">Q3 FY'25</span>
+            <h2>Architecture & Documentation</h2>
+        </div>
+        <div class="grid-2">
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="arch-container" style="flex:1;">
+                    <div class="arch-title" style="color:#34d399;">React Pipeline Extension</div>
+                    <p style="color:var(--text-secondary); margin:15px 0;">Extended UnifiedCI to support:</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                        <span
+                            style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:8px 16px; border-radius:10px; font-size:0.85rem; color:#34d399;">npm</span>
+                        <span
+                            style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:8px 16px; border-radius:10px; font-size:0.85rem; color:#34d399;">Jest</span>
+                        <span
+                            style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:8px 16px; border-radius:10px; font-size:0.85rem; color:#34d399;">Cypress</span>
+                        <span
+                            style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:8px 16px; border-radius:10px; font-size:0.85rem; color:#34d399;">ESLint</span>
+                        <span
+                            style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:8px 16px; border-radius:10px; font-size:0.85rem; color:#34d399;">Node
+                            18/20</span>
+                    </div>
+                </div>
+                <div class="arch-container" style="flex:1;">
+                    <div class="arch-title" style="color:#a78bfa;">Jenkins MCP Exploration</div>
+                    <div class="flow-diagram" style="margin:20px 0;">
+                        <div class="flow-step"
+                            style="background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(124,58,237,0.1));">
+                            <div class="num">🧠</div>
+                            <div class="label">LLM</div>
+                        </div>
+                        <span class="flow-arrow">↔</span>
+                        <div class="flow-step"
+                            style="background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(124,58,237,0.1));">
+                            <div class="num">🔌</div>
+                            <div class="label">MCP</div>
+                        </div>
+                        <span class="flow-arrow">↔</span>
+                        <div class="flow-step"
+                            style="background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(124,58,237,0.1));">
+                            <div class="num">⚙️</div>
+                            <div class="label">Jenkins</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="glass-card" style="border-top:3px solid var(--accent-green);">
+                    <h3 style="color:#34d399;">📄 Documentation</h3>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+                        <span class="doc-badge">✓ React Pipeline Guide</span>
+                        <span class="doc-badge">✓ Extended API Docs</span>
+                        <span class="doc-badge">✓ AI/ML Findings</span>
+                    </div>
+                </div>
+                <div class="glass-card" style="border-top:3px solid var(--accent-purple);">
+                    <h3 style="color:#a78bfa;">🤖 AI/ML Use Cases</h3>
+                    <ul class="content-list">
+                        <li>Intelligent failure analysis</li>
+                        <li>Automated issue resolution</li>
+                        <li>Log analysis with LLMs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Q3 Demo -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q3-badge">Q3 FY'25</span>
+            <h2>Demo Video</h2>
+        </div>
+        <div class="demo-container">
+            <div class="demo-icon">🎬</div>
+            <div class="demo-title">React Pipeline + AI/ML Exploration</div>
+            <div class="demo-subtitle">[Insert Demo Video Here]</div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Q4 Overview -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q4-badge">Q4 FY'26</span>
+            <h2>Mobile CI/CD + AI/ML</h2>
+        </div>
+        <div class="grid-4">
+            <div class="glass-card objective-card">
+                <h3>🎯 Objective</h3>
+                <ul class="content-list">
+                    <li>To implement Android CI/CD with Docker</li>
+                    <li>To enable Play Store deployment</li>
+                    <li>To advance AI/ML integration</li>
+                </ul>
+            </div>
+            <div class="glass-card achievement-card">
+                <h3>✅ Achievements</h3>
+                <ul class="content-list">
+                    <li>Environment setup completed</li>
+                    <li>Build pipeline working</li>
+                    <li>Testing integration done</li>
+                    <li>🔄 Play Store deployment in progress</li>
+                </ul>
+            </div>
+            <div class="glass-card learning-card">
+                <h3>📚 Learnings</h3>
+                <ul class="content-list">
+                    <li>Android CI/CD best practices</li>
+                    <li>Fastlane for deployment</li>
+                    <li>Docker for mobile builds</li>
+                    <li>APK/AAB generation</li>
+                </ul>
+            </div>
+            <div class="glass-card challenge-card">
+                <h3>⚡ Challenges</h3>
+                <ul class="content-list">
+                    <li>Play Store validation</li>
+                    <li>Signing certificate management</li>
+                    <li>AI/ML model complexity</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Q4 Architecture -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q4-badge">Q4 FY'26</span>
+            <h2>Architecture & Documentation</h2>
+        </div>
+        <div class="grid-2">
+            <div class="arch-container">
+                <div class="arch-title" style="color:#fbbf24;">Mobile CI/CD Architecture</div>
+                <pre>
+┌──────────────────────────────────────┐
+│         JENKINS CONTROLLER           │
+│  Jenkinsfile → Shared Library →      │
+│              Pipeline Execution      │
+└──────────────────────────────────────┘
+                    ↓
+┌──────────────────────────────────────┐
+│           DOCKER AGENT               │
+│   react-native-android:latest        │
+│  ┌────────┐ ┌────────┐ ┌────────┐   │
+│  │Java 17 │ │Node 20 │ │SDK 34  │   │
+│  └────────┘ └────────┘ └────────┘   │
+│  ┌────────┐ ┌────────┐              │
+│  │Fastlane│ │Gradle  │              │
+│  └────────┘ └────────┘              │
+└──────────────────────────────────────┘
+      ↓            ↓            ↓
+  [Nexus]    [Play Store]    [Slack]
+                </pre>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="glass-card" style="border-top:3px solid var(--accent-green);">
+                    <h3 style="color:#34d399;">📄 Documentation</h3>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+                        <span class="doc-badge">✓ Android CI/CD Guide</span>
+                        <span class="doc-badge">✓ Docker Image Docs</span>
+                        <span class="doc-badge"
+                            style="background:rgba(245,158,11,0.1); border-color:rgba(245,158,11,0.3); color:#fbbf24;">🔄
+                            Play Store Guide</span>
+                    </div>
+                </div>
+                <div class="glass-card" style="border-top:3px solid var(--accent-purple);">
+                    <h3 style="color:#a78bfa;">🤖 AI/ML Integration</h3>
+                    <ul class="content-list">
+                        <li>Smart Jenkins Node Selection</li>
+                        <li>High-level approach defined</li>
+                        <li>CI areas for AI identified</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Q4 Demo -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="quarter-badge q4-badge">Q4 FY'26</span>
+            <h2>Demo Video</h2>
+        </div>
+        <div class="demo-container">
+            <div class="demo-icon">🔄</div>
+            <div class="demo-title">Mobile CI/CD Demo</div>
+            <div class="demo-subtitle">Work in Progress — Coming Soon</div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Key Achievements -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Key Achievements</h2>
+        </div>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-icon">🎯</div>
+                <div class="summary-value blue">4</div>
+                <div class="summary-label">POCs Delivered</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">🌐</div>
+                <div class="summary-value purple">4</div>
+                <div class="summary-label">Tech Stacks Supported</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">📉</div>
+                <div class="summary-value green">95%</div>
+                <div class="summary-label">Code Reduction</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">⏱️</div>
+                <div class="summary-value orange">Days→Hrs</div>
+                <div class="summary-label">Setup Time</div>
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="glass-card" style="border-top:3px solid var(--accent-green);">
+                <h3 style="color:#34d399;">✅ Delivered POCs</h3>
+                <ul class="content-list">
+                    <li>POC 1: Automated Repository Maintenance</li>
+                    <li>POC 2: UnifiedCI for Java & Python</li>
+                    <li>POC 3: React Extension + AI/ML Research</li>
+                    <li>POC 4: Mobile CI/CD (In Progress)</li>
+                </ul>
+            </div>
+            <div class="glass-card" style="border-top:3px solid var(--accent-blue);">
+                <h3 style="color:#60a5fa;">📚 Documentation</h3>
+                <ul class="content-list">
+                    <li>Architecture docs for all POCs</li>
+                    <li>API reference & onboarding guides</li>
+                    <li>Configuration schemas & examples</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: Future Roadmap -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2>Future Roadmap</h2>
+        </div>
+        <div class="grid-2" style="flex:1;">
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="glass-card" style="border-top:3px solid var(--accent-green);">
+                    <h3 style="color:#34d399;">📱 Mobile CI/CD Completion</h3>
+                    <ul class="content-list">
+                        <li>Complete Play Store deployment</li>
+                        <li>iOS support exploration</li>
+                        <li>Cross-platform testing</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="border-top:3px solid var(--accent-blue);">
+                    <h3 style="color:#60a5fa;">🏢 Organization Adoption</h3>
+                    <ul class="content-list">
+                        <li>Pilot rollout to production teams</li>
+                        <li>Training & onboarding sessions</li>
+                        <li>Feedback collection & iteration</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="glass-card" style="border-top:3px solid var(--accent-purple);">
+                    <h3 style="color:#a78bfa;">🤖 AI/ML Integration</h3>
+                    <ul class="content-list">
+                        <li>LLM-powered log analysis</li>
+                        <li>Intelligent failure prediction</li>
+                        <li>Smart test selection</li>
+                        <li>Automated issue resolution</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="border-top:3px solid var(--accent-orange);">
+                    <h3 style="color:#fbbf24;">☁️ Cloud Enhancement</h3>
+                    <ul class="content-list">
+                        <li>Auto-scaling build infrastructure</li>
+                        <li>Cloud-native CI/CD patterns</li>
+                        <li>Cost optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Thank You -->
+    <div class="slide title-slide">
+        <div class="thankyou-text">Thank You!</div>
+        <p style="font-size:1.4rem; color:var(--text-secondary); margin-top:25px;">Happy to take any questions 🙋</p>
+        <div class="meta-info" style="margin-top:50px;">
+            <span>📧 manprit.singh@company.com</span>
+            <span>💼 SISC Intern</span>
+        </div>
+    </div>
+
+    <div class="nav-container">
+        <button class="nav-btn" onclick="prevSlide()">← Previous</button>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+    <div class="slide-indicator"><span id="curr">1</span> / <span id="total">18</span></div>
+
+    <script>
+        let curr = 0;
+        const slides = document.querySelectorAll('.slide');
+        document.getElementById('total').textContent = slides.length;
+
+        function show(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            curr = (n + slides.length) % slides.length;
+            slides[curr].classList.add('active');
+            document.getElementById('curr').textContent = curr + 1;
+            document.getElementById('progress').style.width = ((curr + 1) / slides.length * 100) + '%';
+        }
+
+        function nextSlide() { show(curr + 1); }
+        function prevSlide() { show(curr - 1); }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+
+</html>
